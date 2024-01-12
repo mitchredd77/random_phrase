@@ -27,7 +27,6 @@ function getRandomColor() {
     let b = Math.floor( Math.random() * 256 );
     let rgb = [r, g, b];
     document.querySelector("body").setAttribute("style", `background-color: rgb(${rgb.join(', ')});`);
-    //document.querySelector("body").attributeStyleMap.set("background-color", `rgb(${rgb.join(', ')})`); 
 };
 
 // Function calls background color change, creates the html, and adds citation and year if exist
