@@ -10,9 +10,9 @@ const quotes = [{source: 'Albert Einstein', quote: "Two things are infinite: the
                 {source: 'Martin Luther King Jr.', quote: 'Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.'},
                 {source: 'Ralph Waldo Emerson', quote: 'To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.'},
                 {source: 'Judy Garland', quote: 'Toto, I\'ve a feeling we\'re not in Kansas anymore.', citation: 'The Wizard of Oz', year: '1939'},
-                {source: 'Hans Solo(Harrison Ford)', quote:'May the force be with you', citation: 'Star Wars', year: '1977'},
-                {source: 'Cuba Gooding Jr.', quote:'Show me the money!', citation: 'Jerry Maguire', year: '1996'}];
-
+                {source: 'Hans Solo(Harrison Ford)', quote:'May the force be with you', citation: 'Star Wars', year: '1977', tags: ['Fantasy', 'Science Fiction']},
+                {source: 'Cuba Gooding Jr.', quote:'Show me the money!', citation: 'Jerry Maguire', year: '1996', tags: ['Sports Drama', 'Romantic Comedy', 'Tom Cruise']}
+];
 // Creates a random quote
 function GetRandomQuote() {
       const randomNumber = Math.floor( Math.random() * quotes.length );
@@ -26,8 +26,9 @@ function getRandomColor() {
     let g = Math.floor( Math.random() * 256 );
     let b = Math.floor( Math.random() * 256 );
     let rgb = [r, g, b];
-    document.querySelector("body").attributeStyleMap.set("background-color", `rgb(${rgb.join(', ')})`); 
-}
+    document.querySelector("body").setAttribute("style", `background-color: rgb(${rgb.join(', ')});`);
+    //document.querySelector("body").attributeStyleMap.set("background-color", `rgb(${rgb.join(', ')})`); 
+};
 
 // Function calls background color change, creates the html, and adds citation and year if exist
 function printQuote() {
@@ -41,11 +42,14 @@ function printQuote() {
       if (quote.year) {
           html += `<span class="year">${quote.year}</span>`;
       }
+      if (quote.tags) {
+          const quoteSep = quote.tags.join(' - ');
+          html += `<span class="tags">${quoteSep}</span>`;
+      }
       html += '</p>';
       document.getElementById('quote-box').innerHTML = html;
+      }
       
-}
-
 // Auto refreshes quote and background color 
 const autoQuote = setInterval(printQuote, 7000);
 /***

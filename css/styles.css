@@ -162,4 +162,10 @@ h1 {
   .source {
     font-size: 1.25rem;
   }
+  .tags:before {
+    content: ", ";
+}
+  .tags {
+    font-style: normal;
+  }
 }
