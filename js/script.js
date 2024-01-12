@@ -13,14 +13,12 @@ const quotes = [{source: 'Albert Einstein', quote: "Two things are infinite: the
                 {source: 'Hans Solo(Harrison Ford)', quote:'May the force be with you', citation: 'Star Wars', year: '1977'},
                 {source: 'Cuba Gooding Jr.', quote:'Show me the money!', citation: 'Jerry Maguire', year: '1996'}];
 
-
 // Creates a random quote
 function GetRandomQuote() {
       const randomNumber = Math.floor( Math.random() * quotes.length );
       const quote = quotes[randomNumber]
       return quote;
 }
-
 
 // Changes the background randomly by getting a random numberfor the r, g, and b in the rgb color
 function getRandomColor() {
@@ -30,6 +28,7 @@ function getRandomColor() {
     let rgb = [r, g, b];
     document.querySelector("body").attributeStyleMap.set("background-color", `rgb(${rgb.join(', ')})`); 
 }
+
 // Function calls background color change, creates the html, and adds citation and year if exist
 function printQuote() {
       getRandomColor();
@@ -46,6 +45,7 @@ function printQuote() {
       document.getElementById('quote-box').innerHTML = html;
       
 }
+
 // Auto refreshes quote and background color 
 const autoQuote = setInterval(printQuote, 7000);
 /***
